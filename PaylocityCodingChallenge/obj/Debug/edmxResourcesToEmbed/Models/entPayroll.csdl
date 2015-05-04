@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Payroll" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="PayrollContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Payroll.Employee" />
+    <EntitySet Name="Dependents" EntityType="Payroll.Dependent" />
+    <AssociationSet Name="EmployeeDependent" Association="Payroll.EmployeeDependent">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Dependent" EntitySet="Dependents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="HireDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Dependents" Relationship="Payroll.EmployeeDependent" FromRole="Employee" ToRole="Dependent" />
+  </EntityType>
+  <EntityType Name="Dependent">
+    <Key>
+      <PropertyRef Name="DependentId" />
+      <PropertyRef Name="FK_EmployeeId" />
+    </Key>
+    <Property Name="DependentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="FK_EmployeeId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Payroll.EmployeeDependent" FromRole="Dependent" ToRole="Employee" />
+    <Property Name="EmployeeEmployeeId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <Association Name="EmployeeDependent">
+    <End Type="Payroll.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="Payroll.Dependent" Role="Dependent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Dependent">
+        <PropertyRef Name="EmployeeEmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

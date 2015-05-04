@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\dsvensson\Desktop\DS-Payroll</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/PaylocityCodingChallenge.dll">
+      <publishTime>05/04/2015 11:06:13</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>05/03/2015 10:42:18</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>05/04/2015 10:19:20</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>05/03/2015 10:42:18</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>05/03/2015 10:42:18</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>05/03/2015 10:42:18</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>05/03/2015 10:42:20</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>05/04/2015 09:18:50</publishTime>
+    </File>
+    <File Include="Views/Home/AddDependent.cshtml">
+      <publishTime>05/03/2015 20:11:02</publishTime>
+    </File>
+    <File Include="Views/Home/EditorTemplates/Dependent.cshtml">
+      <publishTime>05/04/2015 10:24:37</publishTime>
+    </File>
+    <File Include="Views/Home/EditorTemplates/Payroll.cshtml">
+      <publishTime>05/04/2015 10:17:49</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>05/04/2015 10:23:22</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>05/04/2015 10:19:24</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>05/03/2015 11:57:12</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>05/03/2015 10:42:18</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/04/2015 11:06:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

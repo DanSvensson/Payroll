@@ -1,0 +1,68 @@
+﻿@model PaylocityCodingChallenge.Models.Payroll
+
+<div class="jumbotron">
+    <h1>Paylocity Coding Challenge</h1>
+    <p class="lead">Daniel Svensson's Mock Payroll Calculator.</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="depenent-list" style="display:block;">
+        <h3 style="font-size:20px; font-weight:700;">Add Employee</h3>
+        @Html.Label("Name")
+        @Html.TextBoxFor(c => c.NewEmployeeName, new { @style = "width:530px;" })
+        <div id="dependent-list" class="depenent-list subBorder" style="width:100%; margin-top:10px;">
+            <input type="button" id="add-dependent" value="Add Dependent to New Employee" style="font-weight:400; margin:5px 10px;" />
+            @Html.EditorForMany(x => x.NewEmployeeDependents)
+        </div>
+        <input type="submit" value="Add Employee to Payroll" style="margin-top:10px; padding:5px;" />
+    </div>
+
+    <div class="depenent-list" style="display:block; margin-top:10px;">
+        <h3 style="font-size:20px; font-weight:700;">Employee Payroll (Base Pay $52,000 Per Employee)</h3>
+        @for (int i = 0; i < Model.EmployeePayroll.Count(); i++)
+        {
+
+            <div class="depenent-list subBorder" style="background-color:#eee; margin:5px;">
+                <div style="font-size:14px; font-weight:600;">@Model.EmployeePayroll[i].Name</div>
+                <div style="font-size:12px;">
+                    Net Pay: @((52000 - (Model.EmployeePayroll[i].AnnualBenefitCosts + Model.EmployeePayroll[i].Dependents.Sum(a => a.AnnualDependentBenfitCost))).ToString("c"))
+                </div>
+                <div style="font-size:12px;">
+                    Total Annual Costs:
+                    @((Model.EmployeePayroll[i].AnnualBenefitCosts + Model.EmployeePayroll[i].Dependents.Sum(a => a.AnnualDependentBenfitCost)).ToString("c"))
+                    (@(((Model.EmployeePayroll[i].AnnualBenefitCosts / 26) + (Model.EmployeePayroll[i].Dependents.Sum(a => a.AnnualDependentBenfitCost) / 26)).ToString("c")) Weekly)
+                </div>
+                <div style="font-size:12px;">
+                    Annual Employee Benefit Cost:
+                    @Model.EmployeePayroll[i].AnnualBenefitCosts.ToString("c")
+                    (@((Model.EmployeePayroll[i].AnnualBenefitCosts / 26).ToString("c")) Weekly)
+                </div>
+                <div style="font-size:12px;">
+                    Annual Dependent Benefit Costs:
+                    @Model.EmployeePayroll[i].Dependents.Sum(a => a.AnnualDependentBenfitCost).ToString("c")
+                    (@((Model.EmployeePayroll[i].Dependents.Sum(a => a.AnnualDependentBenfitCost) / 26).ToString("c")) Weekly)
+                </div>
+
+                @Html.Hidden(String.Format("EmployeePayroll[{0}].Name", i), Model.EmployeePayroll[i].Name)
+                @Html.Hidden(String.Format("EmployeePayroll[{0}].AnnualBenefitCosts", i), Model.EmployeePayroll[i].AnnualBenefitCosts)
+                <div style="font-size:12px; background-color:white; width:320px;" class="depenent-list subBorder">
+                    Dependents:<br />
+                    @for (int j = 0; j < Model.EmployeePayroll[i].Dependents.Count; j++)
+                    {
+                        <div>
+                            @Html.Hidden(String.Format("EmployeePayroll[{0}].Dependents[{1}].Name", i, j), Model.EmployeePayroll[i].Dependents[j].Name)
+                            @Html.Hidden(String.Format("EmployeePayroll[{0}].Dependents[{1}].AnnualDependentBenfitCost", i, j), Model.EmployeePayroll[i].Dependents[j].AnnualDependentBenfitCost)
+                            <div style="display:inline-block; margin-left:10px; margin-left:10px; width:150px; overflow:hidden; vertical-align:top;">@Model.EmployeePayroll[i].Dependents[j].Name</div>
+                            <div style="display: inline-block; font-size: 10px; width:100px;vertical-align:top;">@Model.EmployeePayroll[i].Dependents[j].AnnualDependentBenfitCost.ToString("c")</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <div style="border-radius:10px; padding:30px; height:80px; margin-top:20px; background-color:#eee;">
+        @Html.Label("Total Payrol Benefit Costs:", new { @style = "font-size:20px; margin-right:15px; " })
+        <span style="font-size:20px">@Model.TotalBenefitCosts.ToString("c")</span>
+    </div>
+}
